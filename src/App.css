@@ -1,0 +1,140 @@
+html {
+  margin: 0;
+  font-family: poppins !important;
+  background: #05061a;
+}
+.ai-lines circle {
+  fill: #7a4dff;
+}
+*/ .operino-bg {
+  position: relative;
+  min-height: 100vh;
+  background: #05061a;
+  background-image:
+    radial-gradient(ellipse 60% 50% at 15% 0%, #5b1fa8 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 90% 0%, #0a2fa8 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 50% 100%, #0d1b6e 0%, transparent 70%);
+  overflow: hidden;
+}
+
+/* Animated particle wave canvas — add <canvas id="wave-canvas"> inside .operino-bg */
+.operino-bg canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.85;
+}
+/* Circuit board lines (top-left) */
+.operino-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(140, 60, 220, 0.18) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(140, 60, 220, 0.18) 1px, transparent 1px),
+    radial-gradient(
+      circle 2px at 18% 12%,
+      rgba(180, 80, 255, 0.7) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle 2px at 22% 18%,
+      rgba(180, 80, 255, 0.5) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle 2px at 14% 20%,
+      rgba(180, 80, 255, 0.5) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle 2px at 82% 8%,
+      rgba(60, 130, 255, 0.7) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle 2px at 88% 14%,
+      rgba(60, 130, 255, 0.5) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle 3px at 92% 10%,
+      rgba(60, 200, 255, 0.9) 0%,
+      transparent 100%
+    );
+  background-size:
+    80px 80px,
+    80px 80px,
+    auto;
+  mask-image:
+    radial-gradient(ellipse 35% 30% at 15% 12%, black 0%, transparent 100%),
+    radial-gradient(ellipse 30% 28% at 88% 10%, black 0%, transparent 100%);
+  mask-composite: add;
+  pointer-events: none;
+}
+/* Glowing dot particles scattered */
+.operino-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      circle 1.5px at 30% 35%,
+      rgba(100, 160, 255, 0.5) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle 1px at 55% 20%,
+      rgba(160, 100, 255, 0.4) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle 1px at 70% 45%,
+      rgba(80, 140, 255, 0.4) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle 2px at 65% 60%,
+      rgba(60, 200, 255, 0.6) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle 1px at 40% 55%,
+      rgba(200, 100, 255, 0.3) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle 1px at 80% 30%,
+      rgba(80, 180, 255, 0.35) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle 1px at 20% 60%,
+      rgba(160, 80, 255, 0.3) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle 1.5px at 90% 50%,
+      rgba(60, 220, 255, 0.5) 0%,
+      transparent 100%
+    );
+  pointer-events: none;
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Content sits on top */
+.operino-bg > *:not(canvas) {
+  position: relative;
+  z-index: 1;
+}

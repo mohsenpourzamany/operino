@@ -1,13 +1,15 @@
 import "./App.css";
+import OperinoBg from "./Components/OperinoBg";
+import HomePage from "./Screens/HomePage";
 
 function App() {
   return (
     <>
-      <div>
-        <h1 className="text-center text-4xl font-bold mb-8 text-blue-400">
-          Operino AI
-        </h1>
-      </div>
+      <OperinoBg>
+        <div className="operino-bg">
+          <HomePage />
+        </div>
+      </OperinoBg>
     </>
   );
 }
