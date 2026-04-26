@@ -72,16 +72,10 @@ export default function OperinHeader() {
         />
         {/* {Logo Section} */}
         <div className="flex items-center">
-          <img src={Logo} alt="OperinoLogo" className="w-18 ml-2 my-1" />
+          <img src={Logo} alt="OperinoLogo" className="w-16 ml-2 my-1" />
 
           <div className="flex flex-col text-center ">
-            <span className="text-white text-lg">OPERINO</span>
-
-            <div>
-              <div className="ml-2 px-1.5 py-0.5 text-xs font-medium text-blue-50">
-                Your AI Employee
-              </div>
-            </div>
+            <span className="text-white text-3xl">Operino</span>
           </div>
         </div>
         {/* Nav Links */}
