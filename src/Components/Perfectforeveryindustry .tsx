@@ -94,7 +94,7 @@ const industries: Industry[] = [
 
 export default function PerfectForEveryIndustry() {
   return (
-    <div className="w-full bg-[#0b0b1a] py-14 px-6 flex flex-col items-center gap-10">
+    <div className="w-full bg-[#0b0b1a] py-14 px-6 flex flex-col items-center gap-10 mb-10">
       {/* Title */}
       <h2 className="text-white text-2xl font-bold tracking-tight text-center">
         Perfect for every industry
