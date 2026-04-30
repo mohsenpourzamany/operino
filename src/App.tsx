@@ -1,13 +1,13 @@
 import "./App.css";
 import OperinoBg from "./Components/OperinoBg";
-import HomePage from "./Screens/HomePage";
+import FeaturesPage from "./Screens/FeaturesPage";
 
 function App() {
   return (
     <>
       <OperinoBg>
         <div className="operino-bg">
-          <HomePage />
+          <FeaturesPage />
         </div>
       </OperinoBg>
     </>

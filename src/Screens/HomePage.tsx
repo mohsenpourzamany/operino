@@ -6,6 +6,7 @@ import HowItWorks from "../Components/HowItWorks";
 import PerfectForEveryIndustry from "../Components/Perfectforeveryindustry ";
 import Pricing from "../Components/Pricing";
 import TrustedBy from "../Components/TrustedBy";
+import Footer from "../UI/Footer";
 import Header from "../UI/Header";
 
 const HomePage = () => {
@@ -20,6 +21,7 @@ const HomePage = () => {
       <Pricing />
       <FAQ />
       <HireAICta />
+      <Footer />
     </div>
   );
 };
