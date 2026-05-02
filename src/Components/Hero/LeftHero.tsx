@@ -27,16 +27,7 @@ const badges = [
 
 const LeftHero: React.FC = () => {
   return (
-    <section
-      className="relative  flex items-center justify-center overflow-hidden rounded-3xl "
-      // style={{
-      //   background:
-      //     "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99,102,241,0.18) 0%, transparent 70%), " +
-      //     "radial-gradient(ellipse 60% 40% at 80% 80%, rgba(139,92,246,0.12) 0%, transparent 60%), " +
-      //     "rgba(8, 8, 20, 0.15)",
-      //   backgroundBlendMode: "normal",
-      // }}
-    >
+    <section className="relative  flex items-center justify-center overflow-hidden rounded-3xl ">
       {/* Ambient glow blobs */}
       <div
         className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-175 h-100 rounded-full"

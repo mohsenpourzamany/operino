@@ -81,13 +81,18 @@ export default function ChatUI() {
 
   return (
     <div
+      className="
+    flex flex-col lg:flex-row
+    items-center justify-center
+    h-auto lg:h-[60vh]
+    px-4 sm:px-6 lg:px-10
+    max-w-7xl
+    text-white
+    overflow-hidden
+  "
       style={{
-        display: "flex",
-        height: "60vh",
-        background: "transparent",
-        color: "white",
         fontFamily: "'Inter', sans-serif",
-        overflow: "hidden",
+        background: "transparent",
       }}
     >
       <style>{`
