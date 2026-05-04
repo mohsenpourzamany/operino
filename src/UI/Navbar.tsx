@@ -161,7 +161,7 @@ function DropdownPanel({
         pointerEvents: visible ? "auto" : "none",
         transition:
           "transform 0.28s cubic-bezier(.4,0,.2,1), opacity 0.22s ease",
-        zIndex: 100,
+        zIndex: 1000,
         minWidth: 260,
       }}
     >
@@ -178,7 +178,7 @@ function DropdownPanel({
           border: "1px solid rgba(124,92,252,0.3)",
           borderBottom: "none",
           borderRight: "none",
-          zIndex: 101,
+          zIndex: 1001,
         }}
       />
 
@@ -565,7 +565,7 @@ export default function Navbar() {
         background: "#09091a",
         fontFamily: "'Inter',sans-serif",
         position: "relative",
-        zIndex: 50,
+        zIndex: 1000,
       }}
     >
       <style>{`

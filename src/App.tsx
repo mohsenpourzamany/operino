@@ -1,19 +1,19 @@
 import "./App.css";
+import ContactSection from "./Components/About/Contact/ContactSection";
 import OperinoBg from "./Components/OperinoBg";
-import OurStory from "./Screens/OurStory";
 import Footer from "./UI/Footer";
 import Header from "./UI/Header";
 
 function App() {
   return (
     <>
+      <Header />
       <OperinoBg>
         <div className="operino-bg">
-          <Header />
-          <OurStory />
-          <Footer />
+          <ContactSection />
         </div>
       </OperinoBg>
+      <Footer />
     </>
   );
 }

@@ -3,6 +3,8 @@ import LeftHeroOurStory from "../Components/About/OurStory/LeftHeroOurStory";
 import JourneyTimeline from "../Components/About/OurStory/JourneyTimeline";
 import MissionSection from "../Components/About/OurStory/MissionSection";
 import ValuesSection from "../Components/About/OurStory/ValuesSection";
+import MeetTheTeam from "../Components/About/OurStory/MeetTheTeam";
+import AboutCTA from "../Components/About/OurStory/AboutCTA";
 
 const OurStory = () => {
   return (
@@ -14,6 +16,8 @@ const OurStory = () => {
       <JourneyTimeline />
       <MissionSection />
       <ValuesSection />
+      <MeetTheTeam />
+      <AboutCTA />
     </>
   );
 };

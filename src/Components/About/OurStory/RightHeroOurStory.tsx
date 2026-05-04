@@ -1,4 +1,4 @@
-import PhotoStory from "../../../assets/Photos/OurstoryPhoto.png";
+import PhotoStory from "../../../assets/Photos/opi-connect.png";
 const RightHeroOurStory = () => {
   return (
     <div>
