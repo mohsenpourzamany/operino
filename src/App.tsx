@@ -1,6 +1,6 @@
 import "./App.css";
-import ContactSection from "./Components/About/Contact/ContactSection";
 import OperinoBg from "./Components/OperinoBg";
+import MultiChannelSection from "./Screens/MultiChannelSection";
 import Footer from "./UI/Footer";
 import Header from "./UI/Header";
 
@@ -10,7 +10,7 @@ function App() {
       <Header />
       <OperinoBg>
         <div className="operino-bg">
-          <ContactSection />
+          <MultiChannelSection />
         </div>
       </OperinoBg>
       <Footer />
