@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import operino from "../assets/operino-favicon.svg";
 // ─── tiny sparkline ───────────────────────────────────────────────────────────
 function Sparkline({ color, data }: { color: string; data: number[] }) {
   const W = 110,
@@ -716,11 +716,16 @@ export default function Dashboard() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: 9,
+            gap: 4,
             padding: "0 6px 24px",
           }}
         >
-          <div
+          <img
+            src={operino}
+            alt="Operino Logo"
+            style={{ width: 32, height: 32, borderRadius: 6 }}
+          />
+          {/* <div
             style={{
               width: 32,
               height: 32,
@@ -737,9 +742,10 @@ export default function Dashboard() {
               <circle cx="12" cy="12" r="7" stroke="white" strokeWidth="2.5" />
               <circle cx="12" cy="12" r="3" fill="white" />
             </svg>
-          </div>
+          </div> */}
           <span
             style={{
+              fontFamily: "'Poppins' !important",
               fontSize: 16,
               fontWeight: 700,
               color: "white",

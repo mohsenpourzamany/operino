@@ -409,39 +409,6 @@ function NetworkDiagram({ visible }: { visible: boolean }) {
           }}
         >
           <img src={opihead} alt="opihead" />
-          {/* <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-            <rect
-              x="5"
-              y="8"
-              width="14"
-              height="10"
-              rx="3"
-              stroke="rgba(196,181,253,0.9)"
-              strokeWidth="1.5"
-            />
-            <path
-              d="M9 12h.01M15 12h.01"
-              stroke="rgba(196,181,253,0.9)"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-            />
-            <path
-              d="M9 14.5s1 1 3 1 3-1 3-1"
-              stroke="rgba(196,181,253,0.9)"
-              strokeWidth="1.3"
-              strokeLinecap="round"
-            />
-            <line
-              x1="12"
-              y1="8"
-              x2="12"
-              y2="5"
-              stroke="rgba(196,181,253,0.9)"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-            <circle cx="12" cy="4.2" r="1.4" fill="rgba(196,181,253,0.9)" />
-          </svg> */}
         </div>
         <p
           style={{
@@ -590,7 +557,7 @@ export default function MultiChannelSection() {
       ref={ref}
       style={{
         width: "100%",
-        background: "linear-gradient(160deg,#07071a,#0c0a22 50%,#080816)",
+        background: "transparent",
         padding: "clamp(56px,8vw,96px) clamp(16px,5vw,48px)",
         fontFamily: "'Inter',sans-serif",
         overflow: "hidden",
@@ -613,8 +580,8 @@ export default function MultiChannelSection() {
           right: "20%",
           width: "50%",
           height: "60%",
-          background:
-            "radial-gradient(ellipse,rgba(80,40,200,0.1) 0%,transparent 65%)",
+          // background:
+          //   "radial-gradient(ellipse,rgba(80,40,200,0.1) 0%,transparent 65%)",
           animation: "glowPulse 8s ease-in-out infinite",
           pointerEvents: "none",
         }}
