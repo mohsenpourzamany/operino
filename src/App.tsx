@@ -1,6 +1,6 @@
 import "./App.css";
 import OperinoBg from "./Components/OperinoBg";
-import AnalyticsPage from "./Screens/AnalyticsPage";
+import SaasTechPage from "./Screens/UseCase/SaasTechPage";
 import Footer from "./UI/Footer";
 import Header from "./UI/Header";
 
@@ -10,7 +10,7 @@ function App() {
       <Header />
       <OperinoBg>
         <div className="operino-bg">
-          <AnalyticsPage />
+          <SaasTechPage />
         </div>
       </OperinoBg>
       <Footer />
