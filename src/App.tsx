@@ -1,16 +1,17 @@
 import "./App.css";
 import OperinoBg from "./Components/OperinoBg";
-import HomePage from "./Screens/HomePage";
 import Footer from "./UI/Footer";
 import Header from "./UI/Header";
-
+import { useMouseSpotlight } from "./Components/useMouseSpotlight";
+import FreeStartPage from "./Screens/FreeStartPage";
 function App() {
+  useMouseSpotlight();
   return (
     <>
       <Header />
       <OperinoBg>
         <div className="operino-bg">
-          <HomePage />
+          <FreeStartPage />
         </div>
       </OperinoBg>
       <Footer />
