@@ -25,6 +25,7 @@ const DashboardSidebar: React.FC<Props> = ({
   onToggle,
 }) => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [profileOpen, setProfileOpen] = useState(false);
 
   return (
     <>
@@ -47,6 +48,13 @@ const DashboardSidebar: React.FC<Props> = ({
         .toggle-btn:hover { background: rgba(124,92,252,0.15); }
         .plan-bar { background: linear-gradient(90deg, #7c5cfc, #a78bfa); border-radius: 4px; height: 4px; }
         @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(124,92,252,0.4);}50%{box-shadow:0 0 0 5px rgba(124,92,252,0);} }
+        @keyframes dropdownUp { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+        .profile-dropdown { animation: dropdownUp 0.25s cubic-bezier(0.34,1.2,0.64,1) forwards; }
+        .profile-item { transition: background 0.18s ease; }
+        .profile-item:hover { background: rgba(124,92,252,0.1); }
+        .profile-item:hover span:last-child { color: #a78bfa; }
+        .profile-item-danger { transition: background 0.18s ease; }
+        .profile-item-danger:hover { background: rgba(248,113,113,0.08); }
         .badge-pulse { animation: pulse 2s ease-in-out infinite; }
       `}</style>
 
@@ -104,10 +112,11 @@ const DashboardSidebar: React.FC<Props> = ({
 
         {/* User */}
         <div
-          className={`border-t border-white/8 p-2 ${collapsed ? "flex justify-center" : ""}`}
+          className={`relative border-t border-white/8 p-2 ${collapsed ? "flex justify-center" : ""}`}
         >
           <div
-            className={`flex items-center gap-2.5 rounded-xl p-2 transition-all hover:bg-white/5 cursor-pointer ${collapsed ? "" : ""}`}
+            onClick={() => setProfileOpen((o) => !o)}
+            className={`flex items-center gap-2.5 rounded-xl p-2 transition-all cursor-pointer border ${profileOpen ? "border-[#7c5cfc]/50 bg-[#7c5cfc]/10" : "border-transparent hover:bg-white/5"} ${collapsed ? "" : ""}`}
           >
             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#7c5cfc] text-[13px] font-bold text-white ring-2 ring-[#7c5cfc]/40">
               M
@@ -120,8 +129,149 @@ const DashboardSidebar: React.FC<Props> = ({
               </p>
               <p className="mt-0.5 text-[10px] text-gray-500">Owner</p>
             </div>
-            {!collapsed && <span className="text-gray-600 text-xs">▾</span>}
+            {!collapsed && (
+              <span
+                className={`text-gray-500 text-xs transition-transform duration-300 ${profileOpen ? "rotate-180" : ""}`}
+              >
+                ▾
+              </span>
+            )}
           </div>
+
+          {/* Profile dropdown */}
+          {profileOpen && !collapsed && (
+            <div
+              className="profile-dropdown absolute bottom-full left-2 right-2 mb-2 z-50 overflow-hidden rounded-2xl border border-white/10 bg-[#0d0b1f] shadow-2xl"
+              style={{
+                boxShadow:
+                  "0 -8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(124,92,252,0.15)",
+              }}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between border-b border-white/8 px-4 py-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#7c5cfc] text-[14px] font-bold text-white ring-2 ring-[#7c5cfc]/40">
+                    M
+                  </div>
+                  <div>
+                    <p className="text-[13px] font-bold text-white leading-none">
+                      Mohsen
+                    </p>
+                    <p className="mt-0.5 text-[10px] text-gray-500">Owner</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setProfileOpen(false)}
+                  className="text-gray-600 hover:text-white transition-colors text-sm"
+                >
+                  ∧
+                </button>
+              </div>
+
+              {/* Plan */}
+              <div className="border-b border-white/8 px-4 py-3">
+                <div className="flex items-center justify-between mb-1.5">
+                  <div className="flex items-center gap-2">
+                    <span className="text-base">👑</span>
+                    <span className="text-[12px] font-bold text-white">
+                      Pro Plan
+                    </span>
+                  </div>
+                  <button className="rounded-lg border border-[#7c5cfc]/40 px-2.5 py-0.5 text-[11px] font-bold text-[#a78bfa] hover:bg-[#7c5cfc]/15 transition-all">
+                    Upgrade
+                  </button>
+                </div>
+                <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
+                  <div
+                    className="h-full rounded-full bg-linear-to-r from-[#7c5cfc] to-[#a78bfa]"
+                    style={{ width: "62%" }}
+                  />
+                </div>
+                <p className="mt-1 text-[10px] text-gray-500">
+                  12,450 / 20,000 Credits used
+                </p>
+              </div>
+
+              {/* Quick Access */}
+              <div className="px-3 py-2">
+                <p className="mb-1.5 px-2 text-[9px] font-bold tracking-widest text-gray-600">
+                  QUICK ACCESS
+                </p>
+                {[
+                  {
+                    icon: "👤",
+                    label: "My Profile",
+                    desc: "View and edit your profile",
+                  },
+                  {
+                    icon: "⚙️",
+                    label: "Account Settings",
+                    desc: "Manage your account preferences",
+                  },
+                  {
+                    icon: "💳",
+                    label: "Billing & Subscription",
+                    desc: "View invoices and manage subscription",
+                  },
+                  {
+                    icon: "📊",
+                    label: "Usage & Limits",
+                    desc: "Monitor your usage and limits",
+                  },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="profile-item flex items-center gap-3 rounded-xl px-2 py-2.5 cursor-pointer"
+                    onClick={() => setProfileOpen(false)}
+                  >
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#7c5cfc]/15 text-base">
+                      {item.icon}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[12px] font-semibold text-white">
+                        {item.label}
+                      </p>
+                      <p className="text-[10px] text-gray-500 truncate">
+                        {item.desc}
+                      </p>
+                    </div>
+                    <span className="text-gray-600 text-xs">›</span>
+                  </div>
+                ))}
+
+                {/* Divider */}
+                <div className="my-1 border-t border-white/8" />
+
+                {/* Quick command */}
+                <div className="profile-item flex items-center gap-3 rounded-xl px-2 py-2.5 cursor-pointer">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#7c5cfc]/15 text-base">
+                    ⌘
+                  </div>
+                  <span className="flex-1 text-[12px] font-semibold text-white">
+                    Quick command
+                  </span>
+                  <span className="flex items-center gap-0.5 rounded bg-white/8 px-1.5 py-0.5 text-[10px] text-[#a78bfa] font-semibold">
+                    ⌘ K
+                  </span>
+                </div>
+
+                {/* Sign out */}
+                <div className="profile-item-danger flex items-center gap-3 rounded-xl px-2 py-2.5 cursor-pointer">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-red-500/15 text-base">
+                    ↪️
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-[12px] font-semibold text-red-400">
+                      Sign out
+                    </p>
+                    <p className="text-[10px] text-gray-500">
+                      Sign out of your account
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Plan */}

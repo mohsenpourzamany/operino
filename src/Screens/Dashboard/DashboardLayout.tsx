@@ -8,6 +8,7 @@ import DashboardAutomations from "./DashboardAutomations";
 import DashboardAnalytics from "./DashboardAnalytics";
 import DashboardIntegrations from "./DashboardIntegrations";
 import DashboardKnowledgeBase from "./DashboardKnowledgeBase";
+import SettingsLayout from "./SettingsLayout";
 
 // Placeholder for pages not yet built
 const ComingSoon: React.FC<{ page: string }> = ({ page }) => (
@@ -31,6 +32,7 @@ const DashboardLayout: React.FC = () => {
       case "analytics": return <DashboardAnalytics />;
       case "integrations": return <DashboardIntegrations />;
       case "knowledge-base": return <DashboardKnowledgeBase />;
+      case "settings": return <SettingsLayout />;
       default: return <ComingSoon page={activePage.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase())} />;
     }
   };

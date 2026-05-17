@@ -4,6 +4,7 @@ import Footer from "./UI/Footer";
 import Header from "./UI/Header";
 import { useMouseSpotlight } from "./Components/useMouseSpotlight";
 import DashboardLayout from "./Screens/Dashboard/DashboardLayout";
+import WhatsAppWidget from "./Components/WhatsAppWidget";
 function App() {
   useMouseSpotlight();
   return (
@@ -14,6 +15,7 @@ function App() {
           <DashboardLayout />
         </div>
       </OperinoBg>
+      <WhatsAppWidget />
       <Footer />
     </>
   );
