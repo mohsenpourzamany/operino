@@ -1,11 +1,11 @@
-import Dashboard from "../Components/Dashboard";
-import FAQ from "../Components/Faq";
-import HeroSection from "../Components/Hero/HeroSection";
-import HireAICta from "../Components/HireAICta";
-import HowItWorks from "../Components/HowItWorks";
-import PerfectForEveryIndustry from "../Components/Perfectforeveryindustry ";
-import Pricing from "../Components/Pricing";
-import TrustedBy from "../Components/TrustedBy";
+import Dashboard from "../Components/HomePage/Dashboard";
+import FAQ from "../Components/HomePage/Faq";
+import HeroSection from "../Components/HomePage/Hero/HeroSection";
+import HireAICta from "../Components/HomePage/HireAICta";
+import HowItWorks from "../Components/HomePage/HowItWorks";
+import PerfectForEveryIndustry from "../Components/HomePage/Perfectforeveryindustry ";
+import Pricing from "../Components/HomePage/Pricing";
+import TrustedBy from "../Components/HomePage/TrustedBy";
 
 const HomePage = () => {
   return (

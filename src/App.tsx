@@ -3,7 +3,7 @@ import OperinoBg from "./Components/OperinoBg";
 import Footer from "./UI/Footer";
 import Header from "./UI/Header";
 import { useMouseSpotlight } from "./Components/useMouseSpotlight";
-import FreeStartPage from "./Screens/FreeStartPage";
+import DashboardLayout from "./Screens/Dashboard/DashboardLayout";
 function App() {
   useMouseSpotlight();
   return (
@@ -11,7 +11,7 @@ function App() {
       <Header />
       <OperinoBg>
         <div className="operino-bg">
-          <FreeStartPage />
+          <DashboardLayout />
         </div>
       </OperinoBg>
       <Footer />
