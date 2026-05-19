@@ -4,8 +4,7 @@ const WHATSAPP_NUMBER = "97156317297";
 const WHATSAPP_MESSAGE = "سلام! می‌خوام با پشتیبانی Operino صحبت کنم.";
 
 const WhatsAppWidget: React.FC = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [hovered, setHovered] = useState(false);
+  const [, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

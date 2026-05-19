@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
+import { ProfileModalManager, type ModalType } from "./ProfileModals";
 
 const navItems = [
   { icon: "🏠", label: "Home", id: "home" },
@@ -9,6 +11,21 @@ const navItems = [
   { icon: "🔗", label: "Integrations", id: "integrations" },
   { icon: "📚", label: "Knowledge Base", id: "knowledge-base" },
   { icon: "⚙️", label: "Settings", id: "settings" },
+  { icon: "📬", label: "Contact", id: "contact" },
+  {
+    icon: "ℹ️",
+    label: "About",
+    id: "about",
+    hasArrow: true,
+    children: [
+      { icon: "🆕", label: "What's New", id: "whats-new" },
+      { icon: "🗺️", label: "Roadmap", id: "roadmap" },
+      { icon: "🔒", label: "Privacy Policy", id: "privacy-policy" },
+      { icon: "📋", label: "Terms of Service", id: "terms" },
+      { icon: "📬", label: "Contact", id: "contact" },
+      { icon: "❓", label: "Help Center", id: "help-center" },
+    ],
+  },
 ];
 
 interface Props {
@@ -26,6 +43,8 @@ const DashboardSidebar: React.FC<Props> = ({
 }) => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState<ModalType>(null);
+  const [expandedItems, setExpandedItems] = useState<string[]>(["about"]);
 
   return (
     <>
@@ -78,34 +97,69 @@ const DashboardSidebar: React.FC<Props> = ({
         {/* Nav */}
         <nav className="flex flex-1 flex-col gap-0.5 overflow-y-auto px-2 py-3">
           {navItems.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => onNavigate(item.id)}
-              onMouseEnter={() => setHoveredItem(item.id)}
-              onMouseLeave={() => setHoveredItem(null)}
-              className={`ds-item flex items-center gap-3 rounded-xl px-2.5 py-2.5 ${active === item.id ? "ds-active text-white" : "text-gray-400 hover:text-white"} ${collapsed ? "justify-center" : ""}`}
-            >
-              <span className="shrink-0 text-[17px]">{item.icon}</span>
-              <span
-                className={`label-transition flex-1 text-[13px] font-medium ${collapsed ? "w-0 opacity-0" : "w-auto opacity-100"}`}
+            <div key={item.id}>
+              <div
+                onClick={() => {
+                  if ((item as any).children) {
+                    setExpandedItems((prev) =>
+                      prev.includes(item.id)
+                        ? prev.filter((x) => x !== item.id)
+                        : [...prev, item.id],
+                    );
+                  } else {
+                    onNavigate(item.id);
+                  }
+                }}
+                onMouseEnter={() => setHoveredItem(item.id)}
+                onMouseLeave={() => setHoveredItem(null)}
+                className={`ds-item flex items-center gap-3 rounded-xl px-2.5 py-2.5 ${active === item.id ? "ds-active text-white" : "text-gray-400 hover:text-white"} ${collapsed ? "justify-center" : ""}`}
               >
-                {item.label}
-              </span>
-              {item.badge && !collapsed && (
-                <span className="badge-pulse flex h-5 min-w-5 items-center justify-center rounded-full bg-[#7c5cfc] px-1.5 text-[10px] font-bold text-white">
-                  {item.badge}
-                </span>
-              )}
-              {item.badge && collapsed && (
-                <div className="absolute right-1 top-1 h-2 w-2 rounded-full bg-[#7c5cfc]" />
-              )}
-              {/* Tooltip when collapsed */}
-              {collapsed && hoveredItem === item.id && (
-                <div className="ds-tooltip">
+                <span className="shrink-0 text-[17px]">{item.icon}</span>
+                <span
+                  className={`label-transition flex-1 text-[13px] font-medium ${collapsed ? "w-0 opacity-0" : "w-auto opacity-100"}`}
+                >
                   {item.label}
-                  {item.badge ? ` (${item.badge})` : ""}
-                </div>
-              )}
+                </span>
+                {(item as any).badge && !collapsed && (
+                  <span className="badge-pulse flex h-5 min-w-5 items-center justify-center rounded-full bg-[#7c5cfc] px-1.5 text-[10px] font-bold text-white">
+                    {(item as any).badge}
+                  </span>
+                )}
+                {(item as any).children && !collapsed && (
+                  <span
+                    className={`text-[10px] text-gray-600 transition-transform duration-200 ${expandedItems.includes(item.id) ? "rotate-180" : ""}`}
+                  >
+                    ▾
+                  </span>
+                )}
+                {(item as any).badge && collapsed && (
+                  <div className="absolute right-1 top-1 h-2 w-2 rounded-full bg-[#7c5cfc]" />
+                )}
+                {collapsed && hoveredItem === item.id && (
+                  <div className="ds-tooltip">
+                    {item.label}
+                    {(item as any).badge ? ` (${(item as any).badge})` : ""}
+                  </div>
+                )}
+              </div>
+
+              {/* Children submenu */}
+              {(item as any).children &&
+                expandedItems.includes(item.id) &&
+                !collapsed && (
+                  <div className="ml-3 mt-0.5 mb-1 border-l border-white/8 pl-3">
+                    {(item as any).children.map((child: any) => (
+                      <div
+                        key={child.id}
+                        onClick={() => onNavigate(child.id)}
+                        className={`flex items-center gap-2 rounded-lg px-2 py-1.5 text-[12px] cursor-pointer transition-all hover:bg-[#7c5cfc]/10 ${active === child.id ? "text-[#a78bfa] font-semibold" : "text-gray-500 hover:text-white"}`}
+                      >
+                        <span className="text-sm">{child.icon}</span>
+                        <span>{child.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
             </div>
           ))}
         </nav>
@@ -222,7 +276,16 @@ const DashboardSidebar: React.FC<Props> = ({
                   <div
                     key={i}
                     className="profile-item flex items-center gap-3 rounded-xl px-2 py-2.5 cursor-pointer"
-                    onClick={() => setProfileOpen(false)}
+                    onClick={() => {
+                      setProfileOpen(false);
+                      const map: ModalType[] = [
+                        "profile",
+                        "account",
+                        "billing",
+                        "usage",
+                      ];
+                      setActiveModal(map[i]);
+                    }}
                   >
                     <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#7c5cfc]/15 text-base">
                       {item.icon}
@@ -318,6 +381,12 @@ const DashboardSidebar: React.FC<Props> = ({
           ‹
         </button>
       </aside>
+
+      {/* Profile Modals */}
+      <ProfileModalManager
+        modal={activeModal}
+        onClose={() => setActiveModal(null)}
+      />
     </>
   );
 };
