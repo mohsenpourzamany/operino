@@ -8,7 +8,7 @@ const Toggle: React.FC<{ on: boolean; onChange: () => void }> = ({
 }) => (
   <button
     onClick={onChange}
-    className={`relative h-5 w-9 rounded-full transition-all duration-300 flex-shrink-0 ${on ? "bg-[#7c5cfc]" : "bg-white/15"}`}
+    className={`relative h-5 w-9 rounded-full transition-all duration-300 shrink-0 ${on ? "bg-[#7c5cfc]" : "bg-white/15"}`}
   >
     <div
       className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-all duration-300 ${on ? "left-4" : "left-0.5"}`}
@@ -1193,11 +1193,8 @@ export const UsageLimitsModal: React.FC<{ onClose: () => void }> = ({
             </h3>
             <div className="flex items-center gap-6">
               {/* Donut */}
-              <div className="relative flex-shrink-0">
-                <svg
-                  viewBox="0 0 100 100"
-                  className="h-[100px] w-[100px] -rotate-90"
-                >
+              <div className="relative shrink-0">
+                <svg viewBox="0 0 100 100" className="h-25 w-25 -rotate-90">
                   <circle
                     cx="50"
                     cy="50"

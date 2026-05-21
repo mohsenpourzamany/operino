@@ -147,7 +147,7 @@ const WhatsAppWidget: React.FC = () => {
             <div className="flex items-center gap-2">
               <div className="online-dot h-2 w-2 rounded-full bg-[#25d366]" />
               <span className="text-[11px] font-semibold text-[#25d366]">
-                Online — پاسخ سریع
+                Online — Fast Response Time
               </span>
             </div>
             <p className="tooltip-text text-[13px] font-bold">
@@ -197,7 +197,7 @@ const WhatsAppWidget: React.FC = () => {
           {/* Online indicator dot */}
           <div className="absolute bottom-6 right-0 z-20 flex items-center gap-1 rounded-full bg-[#0d0b1f]/90 px-2 py-1 text-[9px] font-semibold shadow-lg border border-white/10">
             <div className="online-dot h-1.5 w-1.5 rounded-full bg-[#25d366]" />
-            <span className="text-[#25d366]">آنلاین</span>
+            <span className="text-[#25d366]">Online</span>
           </div>
         </div>
       </div>

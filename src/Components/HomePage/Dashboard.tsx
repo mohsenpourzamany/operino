@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import operino from "../assets/operino-favicon.svg";
+import operino from "../../assets/operino-favicon.svg";
 // ─── tiny sparkline ───────────────────────────────────────────────────────────
 function Sparkline({ color, data }: { color: string; data: number[] }) {
   const W = 110,

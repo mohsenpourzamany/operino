@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import opihead from "../assets/Photos/Opi-Head-1.png";
+import opihead from "../../assets/Photos/Opi-Head-1.png";
 
 // ─── Channel data with positions (% of container) ────────────────────────────
 const channels = [

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import opidocs from "../../assets/Photos/OpiDocs-1.png";
+import opidocs from "../../../assets/Photos/OpiDocs-1.png";
 const DocsHelpBanner: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
